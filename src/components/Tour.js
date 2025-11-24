@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 
 function Tour({ id, name, info, image, price, removeTour }) {
   const [readMore, setReadMore] = useState(false)
+
+  const text = info || "";  
+
   return (
     <div>
       <img src={image} alt={name} className="rounded mb-4" />
@@ -13,24 +16,29 @@ function Tour({ id, name, info, image, price, removeTour }) {
         </span>
       </header>
 
-      <p className="text-gray-700 mb-3">
-        {readMore ? info : `${info.substring(0, 200)}...`}
-        <button
-          onClick={() => setReadMore(!readMore)}
-          className="text-blue-600 ml-2"
-        >
-          {readMore ? "Show Less" : "Show More"}
-        </button>
+      <p className="text-gray-700 mb-3" id={`tour-item-para-${id}`}>
+        {readMore ? text : `${text.substring(0, 200)}...`}
+
+        {text.length > 200 && (
+          <button
+            onClick={() => setReadMore(!readMore)}
+            className="text-blue-600 ml-2"
+          >
+            {readMore ? "Show Less" : "Show More"}
+          </button>
+        )}
       </p>
 
+
       <button
+      id={`delete-btn-${id}`}
         onClick={() => removeTour(id)}
         className="bg-red-500 text-white px-4 py-2 rounded w-full"
       >
         Remove
       </button>
     </div>
-  )
+  );
 }
 
-export default Tour
+export default Tour;
