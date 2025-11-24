@@ -25,7 +25,7 @@ function Tour({ id, name, info, image, price, removeTour }) {
                         onClick={() => setReadMore(!readMore)}
                         className="text-blue-600 ml-2"
                     >
-                        {readMore ? "Show Less" : "Show More"}
+                        {readMore ? "See less" : "See more"}
                     </button>
                 )}
             </p>
